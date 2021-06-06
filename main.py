@@ -28,13 +28,16 @@ def read_sensor():
 
 
 def do_stuff():
-    
+    max_temp = 35
+    base_temp =20
+
     current_temp = float(read_sensor())
     print(current_temp)
-    if(current_temp>28.0):
+    if(current_temp>max_temp):
         fan_out.value= 1
     else:
-        fan_out.value= 0.1
+        # increase fan power with rising temperature, but never lower than 20%
+        fan_out.value= min(current_temp-base_temp / max_temp-base_temp, 0.2)
 
     log_to_db(current_temp, fan_out.value)
 def log_to_db(temp, power):
