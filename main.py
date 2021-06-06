@@ -35,6 +35,18 @@ def do_stuff():
         fan_out.value= 1
     else:
         fan_out.value= 0.1
+
+    log_to_db(current_temp, fan_out.value)
+def log_to_db(temp, power):
+    temp_insert ="""
+    insert into temperature_log (temperature) values({temp})
+    """
+    fan_insert ="""
+    insert into fan_log (power) values({power})
+    """
+
+    database.execute_query(DB, fan_insert)
+    database.execute_query(DB, temp_insert)
 # read sensor data
 while True: 
     do_stuff()
