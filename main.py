@@ -27,7 +27,7 @@ def read_sensor():
 
 def do_stuff():
     
-    current_temp = read_sensor()
+    current_temp = float(read_sensor())
     print(current_temp)
     if(current_temp>28.0):
         fan_out.value= 1
