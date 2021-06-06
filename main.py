@@ -2,9 +2,11 @@ import re, os, time
 
 from gpiozero import PWMOutputDevice
 from gpiozero.pins.pigpio import PiGPIOFactory
-
+import database
 pin_fan_out = 21
+
 fan_out = PWMOutputDevice(pin_fan_out, frequency=2200) 
+DB = database.connect("DB.sqlite")
 
 
 # function: read and parse sensor data file
@@ -33,7 +35,6 @@ def do_stuff():
         fan_out.value= 1
     else:
         fan_out.value= 0.1
-
 # read sensor data
 while True: 
     do_stuff()
