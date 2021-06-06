@@ -2,11 +2,11 @@
 import database
 
 temp_log = """CREATE TABLE IF NOT EXISTS temperature_log (
-  temperature REAL
+  temperature REAL,
   timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );"""
 fan_log = """CREATE TABLE IF NOT EXISTS fan_log (
-  power REAL
+  power REAL,
   timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 );"""
 
