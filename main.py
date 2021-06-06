@@ -3,7 +3,7 @@ import re, os, time
 from gpiozero import PWMLED
 from gpiozero.pins.pigpio import PiGPIOFactory
 
-pin_fan_out = 4
+pin_fan_out = 3
 fan_out = PWMLED(pin_fan_out) 
 
 
