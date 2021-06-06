@@ -32,7 +32,7 @@ def do_stuff():
     if(current_temp>28.0):
         fan_out.value= 1
     else:
-        fan_out.value= 0.5
+        fan_out.value= 0.1
 
 # read sensor data
 while True: 
