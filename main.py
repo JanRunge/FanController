@@ -1,10 +1,10 @@
 import re, os, time
 
-from gpiozero import PWMLED
+from gpiozero import PWMOutputDevice
 from gpiozero.pins.pigpio import PiGPIOFactory
 
 pin_fan_out = 21
-fan_out = PWMLED(pin_fan_out) 
+fan_out = PWMOutputDevice(pin_fan_out, frequency=2200) 
 
 
 # function: read and parse sensor data file
