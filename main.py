@@ -1,7 +1,15 @@
 import re, os, time
-sensorpath = "/sys/bus/w1/devices/28-021600b914ff/w1_slave"
+
+from gpiozero import PWMLED
+from gpiozero.pins.pigpio import PiGPIOFactory
+
+pin_fan_out = 4
+fan_out = PWMLED(pin_fan_out) 
+
+
 # function: read and parse sensor data file
-def read_sensor(path):
+def read_sensor():
+  path = "/sys/bus/w1/devices/28-021600b914ff/w1_slave"
   value = "U"
   try:
     f = open(path, "r")
@@ -17,10 +25,16 @@ def read_sensor(path):
   return value
 
 
+def do_stuff():
+    
+    current_temp = read_sensor()
+    print(current_temp)
+    if(current_temp>28.0):
+        fan_out.value= 1
+    else:
+        fan_out.value= 0.5
 
 # read sensor data
 while True: 
-    data =  read_sensor(sensorpath)
-    print(data)
+    do_stuff()
     time.sleep(1)
-
