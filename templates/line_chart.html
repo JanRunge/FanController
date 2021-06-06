@@ -89,12 +89,12 @@
       }
 
       var mychart2 = document.getElementById("chartfan").getContext("2d");
-      max = {{ max }}
+      max = {{ max2 }}
       // draw bar chart
       var LineChartDemo = new Chart(mychart2).Line(barData2, {
         scaleOverride: true,
         scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max2 / steps),
+        scaleStepWidth: Math.ceil(max / steps),
         scaleStartValue: 0,
         scaleShowVerticalLines: true,
         scaleShowGridLines : true,
