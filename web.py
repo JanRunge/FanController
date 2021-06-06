@@ -9,8 +9,7 @@ app = Flask(__name__)
 def hello_world():
     (values,labels) = get_data()
     
-    render_template('line_chart.html', title='Bitcoin Monthly Price in USD', max=100, labels=labels, values=values)
-    return str
+    return render_template('line_chart.html', title='Bitcoin Monthly Price in USD', max=100, labels=labels, values=values)
 
 def get_data():
     temp_data = database.select(db, "select temperature, timestamp from temperature_log where timestamp > datetime('now','-2 day','localtime') order by timestamp asc")
