@@ -22,7 +22,7 @@ def read_sensor():
       if m:
         value = str(float(m.group(2)) / 1000.0)
     f.close()
-  except (IOError), e:
+  except (IOError) as e:
     print time.strftime("%x %X"), "Error reading", path, ": ", e
   return value
 
