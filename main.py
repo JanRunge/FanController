@@ -38,10 +38,10 @@ def do_stuff():
 
     log_to_db(current_temp, fan_out.value)
 def log_to_db(temp, power):
-    temp_insert ="""
+    temp_insert =f"""
     insert into temperature_log (temperature) values({temp})
     """
-    fan_insert ="""
+    fan_insert =f"""
     insert into fan_log (power) values({power})
     """
 
