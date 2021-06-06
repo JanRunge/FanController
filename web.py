@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Markup, render_template
 from datetime import timezone, datetime
 import database
 
@@ -7,17 +7,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    data = get_data()
-    val, ts = data[0]
-    str = f"{val}, {ts}"
+    (values,labels) = get_data()
+    
+    render_template('line_chart.html', title='Bitcoin Monthly Price in USD', max=100, labels=labels, values=values)
     return str
 
 def get_data():
     temp_data = database.select(db, "select temperature, timestamp from temperature_log where timestamp > datetime('now','-2 day','localtime') order by timestamp asc")
-    result = []
+    values = []
+    labels = []
     for row in temp_data:
         val, timestamp = row
         timestamp = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
         timestamp_new = (timestamp - datetime(1970, 1, 1)).total_seconds()
-        result.append((val, timestamp_new))
-    return result
+        values.append(val)
+        labels.append(labels)
+    return (values,labels)
