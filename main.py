@@ -6,7 +6,7 @@ import database
 pin_fan_out = 21
 
 fan_out = PWMOutputDevice(pin_fan_out, frequency=2200) 
-DB = database.connect("DB.sqlite")
+DB = database.connect()
 
 
 # function: read and parse sensor data file

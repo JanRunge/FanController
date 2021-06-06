@@ -1,7 +1,8 @@
 import sqlite3
 from sqlite3 import Error
 
-def connect(path):
+def connect():
+    path = "DB.sqlite"
     connection = None
     try:
 
