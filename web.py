@@ -20,5 +20,5 @@ def get_data():
         timestamp = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
         timestamp_new = (timestamp - datetime(1970, 1, 1)).total_seconds()
         values.append(val)
-        labels.append(timestamp_new)
+        labels.append(timestamp)
     return (values,labels)
