@@ -53,4 +53,4 @@ def log_to_db(temp, power):
 # read sensor data
 while True: 
     do_stuff()
-    time.sleep(10)
+    time.sleep(60)
