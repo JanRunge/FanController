@@ -9,7 +9,7 @@ fan_out = PWMOutputDevice(pin_fan_out, frequency=2200)
 DB = database.connect()
 # first argument is the sleeptime in seconds
 if(len(sys.argv)>1):
-    sleeptime = sys.argv[1]
+    sleeptime = int(sys.argv[1])
 else:
     sleeptime = 600
 
