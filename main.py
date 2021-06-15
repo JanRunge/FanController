@@ -1,5 +1,5 @@
 import re, os, time
-
+import sys
 from gpiozero import PWMOutputDevice
 from gpiozero.pins.pigpio import PiGPIOFactory
 import database
@@ -7,7 +7,11 @@ pin_fan_out = 21
 
 fan_out = PWMOutputDevice(pin_fan_out, frequency=2200) 
 DB = database.connect()
-
+# first argument is the sleeptime in seconds
+if(len(sys.argv)>1):
+    sleeptime = sys.argv[1]
+else:
+    sleeptime = 600
 
 # function: read and parse sensor data file
 def read_sensor():
@@ -53,4 +57,4 @@ def log_to_db(temp, power):
 # read sensor data
 while True: 
     do_stuff()
-    time.sleep(600)
+    time.sleep(sleeptime)
