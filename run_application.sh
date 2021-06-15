@@ -15,6 +15,6 @@ cleanup() {
 trap cleanup EXIT TERM
 
 flask run --host=0.0.0.0 &  pids+=( "$!" )
-python3 main.py & pids+=( "$!" )
+python3 main.py $1 & pids+=( "$!" )
 
 wait # sleep until all background processes have exited, or a trap fires
