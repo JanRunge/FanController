@@ -10,8 +10,7 @@
   <center>
     <h1>{{ title }}</h1>
 
-    <canvas id="charttemp" width="600" height="400"></canvas>
-    <canvas id="chartfan" width="600" height="400"></canvas>
+    <canvas id="charttemp" width="1600" height="800"></canvas>
     <script>
 
       // bar chart data
@@ -51,59 +50,20 @@
       // get bar chart canvas
       var mychart = document.getElementById("charttemp").getContext("2d");
 
-      steps = 5
+      steps = 10
       max = {{ max }}
       // draw bar chart
       var LineChartDemo = new Chart(mychart).Line(barData, {
         scaleOverride: true,
         scaleSteps: steps,
         scaleStepWidth: Math.ceil(max / steps),
-        scaleStartValue: 0,
+        scaleStartValue: 20,
         scaleShowVerticalLines: true,
         scaleShowGridLines : true,
         barShowStroke : true,
         scaleShowLabels: true,
         bezierCurve: false,
       });
-       var barData2 = {
-        labels : [
-          {% for item in labels2 %}
-            "{{ item }}",
-          {% endfor %}
-        ],
-
-        datasets : [{
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
-          bezierCurve : false,
-          data : [
-	    {% for item in values2 %}
-              {{ item }},
-            {% endfor %}]
-          }
-	]
-      }
-
-      var mychart2 = document.getElementById("chartfan").getContext("2d");
-      steps = 0.1
-      max = {{ max2 }}
-      // draw bar chart
-      var LineChartDemo = new Chart(mychart2).Line(barData2, {
-        scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
-        scaleStartValue: 0,
-        scaleShowVerticalLines: true,
-        scaleShowGridLines : true,
-        barShowStroke : true,
-        scaleShowLabels: true,
-        bezierCurve: false,
-      });
-
     </script>
   </center>
 </body>
