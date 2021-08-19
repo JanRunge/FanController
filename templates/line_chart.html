@@ -50,14 +50,13 @@
       // get bar chart canvas
       var mychart = document.getElementById("charttemp").getContext("2d");
 
-      steps = 10
-      max = {{ max }}
+      steps = 15
       // draw bar chart
       var LineChartDemo = new Chart(mychart).Line(barData, {
         scaleOverride: true,
         scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
-        scaleStartValue: 20,
+        scaleStepWidth: 1,
+        scaleStartValue: 18,
         scaleShowVerticalLines: true,
         scaleShowGridLines : true,
         barShowStroke : true,
