@@ -3,9 +3,7 @@ import sys
 from gpiozero import PWMOutputDevice
 from gpiozero.pins.pigpio import PiGPIOFactory
 import database
-pin_fan_out = 21
 
-fan_out = PWMOutputDevice(pin_fan_out, frequency=2200) 
 DB = database.connect()
 # first argument is the sleeptime in seconds
 if(len(sys.argv)>1):
@@ -32,18 +30,14 @@ def read_sensor():
 
 
 def do_stuff():
-    max_temp = 35
-    base_temp =20
-
     current_temp = float(read_sensor())
+    if current_temp == "U":
+      return
     print(current_temp)
-    if(current_temp>max_temp):
-        fan_out.value= 1
-    else:
-        # increase fan power with rising temperature, but never lower than 20%
-        fan_out.value= min(current_temp-base_temp / max_temp-base_temp, 0.2)
+    
 
-    log_to_db(current_temp, fan_out.value)
+    log_to_db(current_temp, 0.5)
+    
 def log_to_db(temp, power):
     temp_insert =f"""
     insert into temperature_log (temperature) values({temp})
