@@ -75,10 +75,10 @@ def log_to_db():
       sensor=sensors[key]
       temperature=sensor.temperature
       humidity=sensor.humidity
-      sqls.append(f"insert into sensor_log (name, temperature, humidity) values({key},{temperature}, {humidity}) ")
+      sqls.append(f"insert into sensor_log (name, temperature, humidity) values('{key}',{temperature}, {humidity}) ")
   for key in fans:
       fan=fans[key]
-      sqls.append(f"insert into fan_log (name, power) values({key},{fan.power}) ")
+      sqls.append(f"insert into fan_log (name, power) values('{key}',{fan.power}) ")
     
   for sql in sqls:
     database.execute_query(DB, sql)
