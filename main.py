@@ -39,8 +39,8 @@ sensor_name_lower="lower"
 sensor_name_upper="upper"
 sensors = {
   sensor_name_outter: Sensor(2),
-  sensor_name_lower: Sensor(2),
-  sensor_name_upper: Sensor(2)
+  #sensor_name_lower: Sensor(2),
+  sensor_name_upper: Sensor(3)
 }
 fans = {
   "outter": Fan(1, 1)#,
@@ -55,6 +55,8 @@ fans = {
 def do_stuff():
   for key in sensors:
     sensors[key].measure()
+    print(key)
+    print(sensors[key].temperature)
   adjust_fans()
   log_to_db()
 
