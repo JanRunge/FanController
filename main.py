@@ -57,7 +57,7 @@ def do_stuff():
     sensors[key].measure()
     print(key)
     print(sensors[key].temperature)
-  adjust_fans()
+  #adjust_fans()
   log_to_db()
 
 def adjust_fans():
