@@ -43,7 +43,7 @@ sensors = {
   sensor_name_upper: Sensor(3)
 }
 fans = {
-  "outter": Fan(1, 1)#,
+  #"outter": Fan(1, 1)#,
   #"inner": Fan(1, 1)
 }
 
